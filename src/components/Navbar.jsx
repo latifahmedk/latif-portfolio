@@ -44,12 +44,41 @@ export default function Navbar() {
   }, []);
 
   const handleLinkClick = (e, href) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    const targetElement = document.querySelector(href);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
+    if (e && e.preventDefault) {
+      e.preventDefault();
     }
+    
+    // Close the mobile drawer immediately
+    setMobileMenuOpen(false);
+
+    if (href.startsWith('#')) {
+      setActiveSection(href.substring(1));
+    }
+
+    // Use a slight timeout to let the drawer collapse animation initiate
+    // which prevents mobile browsers from aborting the smooth scroll gesture
+    setTimeout(() => {
+      if (href === '#home') {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+        return;
+      }
+
+      const targetElement = document.querySelector(href);
+      if (targetElement) {
+        // Account for fixed floating navbar height
+        const navbarHeight = 85;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        });
+      }
+    }, 100);
   };
 
   return (

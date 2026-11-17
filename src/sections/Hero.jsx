@@ -10,7 +10,13 @@ export default function Hero() {
     e.preventDefault();
     const projectsElem = document.getElementById('projects');
     if (projectsElem) {
-      projectsElem.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = 85;
+      const elementPosition = projectsElem.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth',
+      });
     }
   };
 
