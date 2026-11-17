@@ -9,7 +9,7 @@ export const personalInfo = {
     "Software Developer Intern with hands-on experience in Python, Django, REST APIs, and React. Strong interest in backend development, problem-solving, and building efficient software solutions. Currently strengthening Data Structures, Algorithms, and logical problem-solving skills while expanding knowledge of Angular, Node.js, and MongoDB. Quick learner with a strong interest in developing scalable applications and continuously improving technical skills.",
   socialLinks: {
     github: "https://github.com/latifahmedk",
-    linkedin: "https://linkedin.com/in/latif-ahmed",
+    linkedin: "https://www.linkedin.com/in/latif-ahmed-1735642a3/",
     leetcode: "https://leetcode.com/latifahmed",
     email: "mailto:latif.bst18@gmail.com",
     phone: "tel:+919326174220",
